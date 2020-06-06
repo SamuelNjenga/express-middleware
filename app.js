@@ -8,18 +8,17 @@ app.get('/', (req, res) => {
     res.send('Home Page');
 });
 
-app.get('/users', auth, (req, res, next) => {
-    console.log(`User is admin = ${req.admin}`)
+app.get('/users', (req, res) => {
     console.log("User's Page");
-    next();
     res.send('Users Page');
 });
 
 //Our Logger Middleware
 function logger(req, res, next) {
-    console.log('Logger');
-    console.log(req.originalUrl);
+    console.log('Before');
     next();
+    console.log('After');
+    
 }
 
 // //Our auth logger
