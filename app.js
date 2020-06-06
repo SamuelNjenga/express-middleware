@@ -22,14 +22,23 @@ function logger(req, res, next) {
     next();
 }
 
-//Our auth logger
-function auth(req, res, next) {
-    if (req.query.admin === 'true') {
+// //Our auth logger
+// function auth(req, res, next) {
+//     if (req.query.admin === 'true') {
+//         req.admin = true;
+//         next();
+//     } else {
+//         res.send('No Auth');
+//     }
+// }
+
+function auth(req,res,next){
+    if(req.query.admin === 'true'){
         req.admin = true;
         next();
-    } else {
-        res.send('No Auth');
+        return;
     }
+    res.send('No auth');
 }
 
 
